@@ -8,3 +8,7 @@
 .categoryItem:hover {
     color: gray;
 }
+
+.formContainer{
+    margin: 10px;
+}

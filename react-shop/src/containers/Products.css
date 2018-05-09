@@ -1,0 +1,20 @@
+li {
+    list-style: none;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    background-color: dimgray;
+    width: 30%;
+    height: 900px;
+}
+
+.grid{
+   
+    width: 100%;
+    margin-left: 1%;
+}
