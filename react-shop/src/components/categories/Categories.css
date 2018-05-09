@@ -1,0 +1,10 @@
+.categoryItem {
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 3px;
+}
+
+.categoryItem:hover {
+    color: gray;
+}

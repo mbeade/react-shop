@@ -1,0 +1,15 @@
+.productCard{
+    border: 2px solid dimgray;
+    border-radius: 4px;
+    width: 200px;
+    float: left;
+    margin: 5px;
+    height: 191px;
+    padding-left: 15px;
+    background-color: darkgray;
+}
+
+.productTitle{
+   color: white;
+   font-weight: bold;
+}
