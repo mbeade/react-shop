@@ -17,7 +17,11 @@ export default class Dashboard extends React.Component {
         this.state = {
             categories: []
         };
-        this.filterCategory = 1;
+        this.filterCategory = this.filterCategory.bind(this);
+    }
+
+    filterCategory(categoryId) {
+        this.props.history.push(`/products?category=${categoryId}`)
     }
 
     render() {
@@ -40,7 +44,7 @@ export default class Dashboard extends React.Component {
 
             <div className={styles.grid}>
                 <Route exact path="/products/new" render={() => <ProductFormContainer categories={this.state.categories} />} />
-                <Route exact path="/products" render={() => <ProductList />} />
+                <Route exact path="/products" component={ProductList} />
             </div>
 
 

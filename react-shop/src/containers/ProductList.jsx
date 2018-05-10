@@ -14,22 +14,17 @@ export default class ProductList extends React.Component {
         this.state = {
             products: [],
             categories: [],
-            selectedCategory: -1,
             loading: false
         }
     }
 
-    filterCategory = (idCategory) => {
-        this.setState({
-            selectedCategory: idCategory
-        })
-    }
-
     componentDidMount() {
-
         this.setState({ loading: true });
-
+        let params = new URLSearchParams(this.props.location.search)
+        let categoryId = params.get('category')
+        console.log(categoryId)
         Promise.all([this.getProducts(), this.getCategories()]).then((response) => {
+            console.log(response)
             this.setState({
                 products: response[0].data,
                 loading: false,
@@ -40,8 +35,8 @@ export default class ProductList extends React.Component {
         });
     }
 
-    getProducts = () => {
-        return axios.get('http://develop.plataforma5.la:3000/api/products');
+    getProducts = (catId) => {
+        return axios.get(`http://develop.plataforma5.la:3000/api/products`);
     }
 
     getCategories = () => {
@@ -56,7 +51,7 @@ export default class ProductList extends React.Component {
                 <div className={styles.wrapper}>
 
                     <div className={styles.grid}>
-                        <GridComponent products={this.state.selectedCategory == -1 ? this.state.products : this.state.products.filter((prod) => prod.categoryId == this.state.selectedCategory)}></GridComponent>
+                        <GridComponent products={this.state.products}></GridComponent>
                     </div>
                 </div>
             }
