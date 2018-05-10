@@ -2,13 +2,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 import GridComponent from '../components/grid/GridComponent';
-import axios from 'axios';
-import Categories from '../components/categories/CategoriesComponent';
 import styles from './Products.css';
-import { Link, Switch, Route } from 'react-router-dom';
 
 export default class ProductList extends React.Component {
-
 
     constructor(props) {
         super(props);
@@ -27,13 +23,11 @@ export default class ProductList extends React.Component {
 
     render() {
         return <div >
-        
             <div className={styles.wrapper}>
                 <div className={styles.grid}>
                     <GridComponent products={this.getProduct()}></GridComponent>
                 </div>
             </div>
-
         </div>
     }
 }

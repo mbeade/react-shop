@@ -2,6 +2,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
+
 export default class ProductList extends React.Component {
 
     constructor(props) {

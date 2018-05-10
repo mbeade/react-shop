@@ -1,17 +1,10 @@
-export const GET_PRODUCTS = 'GET_PRODUCTS';
+
 export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS';
-export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const RECEIVE_CART = 'RECEIVE_CART';
 
-// actions creators
-export function getAllProducts() {
-    return {
-        type: GET_PRODUCTS
-    }
-}
 export function receiveProducts(products) {
     return {
         type: RECEIVE_PRODUCTS,
@@ -19,14 +12,9 @@ export function receiveProducts(products) {
     }
 }
 
-export function getAllCategories() {
-    return {
-        type: GET_CATEGORIES
-    }
-}
 export function receiveCategories(categories) {
     return {
-        type: GET_CATEGORIES,
+        type: RECEIVE_CATEGORIES,
         categories: categories
     }
 }

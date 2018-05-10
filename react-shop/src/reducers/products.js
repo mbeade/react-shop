@@ -1,5 +1,6 @@
-import { GET_PRODUCTS, RECEIVE_PRODUCTS, RECEIVE_CATEGORIES, GET_CATEGORIES } from '../actions';
-initialState = {
+import { RECEIVE_PRODUCTS, RECEIVE_CATEGORIES } from '../actions';
+
+const initialState = {
     items: [],
     categories: [],
     isLoading: false,
@@ -7,16 +8,6 @@ initialState = {
 
 function products(state = initialState, action) {
     switch (action.type) {
-        case GET_PRODUCTS:
-            return {
-                ...state,
-                isLoading: true,
-            }
-        case GET_PRODUCTS:
-            return {
-                ...state,
-                isLoading: true,
-            }
         case RECEIVE_PRODUCTS:
             return {
                 ...state,
@@ -33,4 +24,5 @@ function products(state = initialState, action) {
             return state
     }
 }
+
 export default products;
