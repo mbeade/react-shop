@@ -50,15 +50,11 @@ export default class ProductList extends React.Component {
 
     render() {
         return <div >
-
-            <h1>List products</h1>
-            <Link to={`/`}>Back</Link>
-
             {this.state.loading ?
                 <span>loading...</span>
                 :
                 <div className={styles.wrapper}>
-                   
+
                     <div className={styles.grid}>
                         <GridComponent products={this.state.selectedCategory == -1 ? this.state.products : this.state.products.filter((prod) => prod.categoryId == this.state.selectedCategory)}></GridComponent>
                     </div>

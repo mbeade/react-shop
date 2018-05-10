@@ -10,5 +10,9 @@ const Item = ({ product }) =>
         <div>
             <p>$ {product.price}</p>
         </div>
+
+        <div>
+            <img src={product.image} />
+        </div>
     </div>
 export default Item;

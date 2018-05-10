@@ -8,13 +8,18 @@ li {
 }
 
 .sidebar {
-    background-color: dimgray;
-    width: 30%;
-    height: 900px;
+    background-color: #171716;
+    width: 18%;
+    height: 1200px;
+    min-width: 200px;
+    padding: 10px;
+    border: 2px solid dimgray;
+    border-radius: 4px;
 }
 
 .grid{
-
     width: 100%;
-    margin-left: 1%;
+    margin-left: 5px;
+    height: 1200px;
+    overflow: scroll;
 }

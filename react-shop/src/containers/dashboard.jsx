@@ -11,6 +11,7 @@ import Categories from '../components/categories/CategoriesComponent';
 
 export default class Dashboard extends React.Component {
 
+
     constructor(props) {
         super(props);
         this.state = {
@@ -22,27 +23,23 @@ export default class Dashboard extends React.Component {
     render() {
         return <div className={styles.wrapper}>
 
-
-
             <div className={styles.sidebar}>
-                <h1>Sidebar</h1>
-                <Route exact path="/products" render={() => (<div className={styles.sidebar}>
-                    <h3>Filter</h3>
-                    <Categories categories={this.state.categories} filterCategory={this.filterCategory}></Categories>
-                </div>)} />
+                <div className={styles.sidebarTitle}>React Shop</div>
 
-                {this.props.match.path.includes('/products') ?
-                    <h1>mostrar filtros</h1>
-                    :
-                    <div>
-                        <Link to={`/products/new`}>Add Products</Link>
-                        <br></br>
-                        <Link to={`/products`}>List Products</Link>
-                    </div>
-                }
+                <Route exact path="/products" render={() =>
+                    <Categories categories={this.state.categories} filterCategory={this.filterCategory}></Categories>
+                } />
+
+
+                <div>
+                    <Link to={`/products/new`}>Add new products</Link>
+                    <br></br>
+                    <Link to={`/products`}>List Products</Link>
+                </div>
             </div>
+
             <div className={styles.grid}>
-                <Route path="/products/new" render={() => <ProductFormContainer categories={this.state.categories} />} />
+                <Route exact path="/products/new" render={() => <ProductFormContainer categories={this.state.categories} />} />
                 <Route exact path="/products" render={() => <ProductList />} />
             </div>
 
