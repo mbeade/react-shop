@@ -9,52 +9,31 @@ import { Link, Switch, Route } from 'react-router-dom';
 
 export default class ProductList extends React.Component {
 
+
     constructor(props) {
         super(props);
-        this.state = {
-            products: [],
-            categories: [],
-            loading: false
-        }
+        this.getProduct = this.getProduct.bind(this);
     }
 
-    componentDidMount() {
-        this.setState({ loading: true });
-        let params = new URLSearchParams(this.props.location.search)
-        let categoryId = params.get('category')
-        console.log(categoryId)
-        Promise.all([this.getProducts(), this.getCategories()]).then((response) => {
-            console.log(response)
-            this.setState({
-                products: response[0].data,
-                loading: false,
-                categories: response[1].data
+    getProduct() {
+        if (this.props.catId !== "-1") {
+            return this.props.products.filter((p) => {
+                return p.categoryId == this.props.catId;
             });
-        }).catch((error) => {
-            console.log(error);
-        });
-    }
-
-    getProducts = (catId) => {
-        return axios.get(`http://develop.plataforma5.la:3000/api/products`);
-    }
-
-    getCategories = () => {
-        return axios.get('http://develop.plataforma5.la:3000/api/categories');
+        } else {
+            return this.props.products;
+        }
     }
 
     render() {
         return <div >
-            {this.state.loading ?
-                <span>loading...</span>
-                :
-                <div className={styles.wrapper}>
-
-                    <div className={styles.grid}>
-                        <GridComponent products={this.state.products}></GridComponent>
-                    </div>
+        
+            <div className={styles.wrapper}>
+                <div className={styles.grid}>
+                    <GridComponent products={this.getProduct()}></GridComponent>
                 </div>
-            }
+            </div>
+
         </div>
     }
 }

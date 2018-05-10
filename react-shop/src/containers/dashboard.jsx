@@ -15,8 +15,11 @@ export default class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            categories: []
+            categories: [],
+            products: [],
         };
+
+
         this.filterCategory = this.filterCategory.bind(this);
     }
 
@@ -34,7 +37,6 @@ export default class Dashboard extends React.Component {
                     <Categories categories={this.state.categories} filterCategory={this.filterCategory}></Categories>
                 } />
 
-
                 <div>
                     <Link to={`/products/new`}>Add new products</Link>
                     <br></br>
@@ -44,7 +46,9 @@ export default class Dashboard extends React.Component {
 
             <div className={styles.grid}>
                 <Route exact path="/products/new" render={() => <ProductFormContainer categories={this.state.categories} />} />
-                <Route exact path="/products" component={ProductList} />
+                <Route exact path="/products" render={(props) =>
+                    <ProductList products={this.state.products} catId={new URLSearchParams(this.props.location.search).get('category')} {...props} />
+                } />
             </div>
 
 
@@ -53,13 +57,20 @@ export default class Dashboard extends React.Component {
 
     componentDidMount() {
         this.setState({ loading: true });
-        this.getCategories().then((response) => {
+        Promise.all([this.getProducts(), this.getCategories()]).then((response) => {
+            console.log(response)
             this.setState({
-                categories: response.data
+                products: response[0].data,
+                loading: false,
+                categories: response[1].data
             });
         }).catch((error) => {
             console.log(error);
         });
+    }
+
+    getProducts = (catId) => {
+        return axios.get(`http://develop.plataforma5.la:3000/api/products`);
     }
 
     getCategories = () => {
